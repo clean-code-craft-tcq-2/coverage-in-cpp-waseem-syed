@@ -25,8 +25,22 @@ typedef struct {
   char brand[48];
 } BatteryCharacter;
 
+struct CoolingTypeAndTemperatureLimits
+{
+   CoolingType m_coolingType;
+   int m_lowerLimit;
+   int m_upperLimit;
+   CoolingTypeAndTemperatureLimits(CoolingType coolingType, int lowerLimit,int upperLimit)
+   : m_coolingType(coolingType)
+   , m_lowerLimit(lowerLimit)
+   , m_upperLimit(upperLimit)
+   {
+   } 
+};
+
 void checkAndAlert(
   AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
 
 void sendToController(BreachType breachType);
 void sendToEmail(BreachType breachType);
+CoolingTypeAndTemperatureLimits getTemperatureLimitsForCoolingType(CoolingType coolingType);
