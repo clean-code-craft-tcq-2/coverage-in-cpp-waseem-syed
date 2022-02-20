@@ -23,7 +23,7 @@ CoolingTypeAndTemperatureLimits getTemperatureLimitsForCoolingType(CoolingType c
    ::std::vector<CoolingTypeAndTemperatureLimits>::iterator it;
    for(it = coolingTypeAndTemperatureLimitsList.begin(); it < coolingTypeAndTemperatureLimitsList.end(); it++)
    {
-	   if(*it.m_coolingType == coolingType)
+	   if(*it->m_coolingType == coolingType)
 	   {
 		  break;
 	   }
