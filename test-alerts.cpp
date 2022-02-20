@@ -13,7 +13,7 @@ TEST_CASE("infers the breach according to limits") {
 
 TEST_CASE("verify limits based on given cooling type")
 {
-	CoolingTypeAndTemperatureLimits coolingTypeAndTemperatureLimitsResults;
+	CoolingTypeAndTemperatureLimits coolingTypeAndTemperatureLimitsResults(PASSIVE_COOLING, 0, 0);//storing some default values
 	
 	CoolingTypeAndTemperatureLimits coolingTypePassiveAndTemperatureLimits(PASSIVE_COOLING, 0, 35);
 	coolingTypeAndTemperatureLimitsResults = getTemperatureLimitsForCoolingType(PASSIVE_COOLING);
