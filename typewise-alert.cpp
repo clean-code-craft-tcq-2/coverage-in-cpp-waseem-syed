@@ -76,3 +76,24 @@ void sendToEmail(BreachType breachType) {
       break;
   }
 }
+
+void printBreachType(BreachType breachType)
+{
+   const char* recepient = "a.b@c.com";
+    printf("To: %s\n", recepient);
+    if(TOO_LOW == breachType)
+    {
+      printf("Hi, the temperature is too low\n");
+    }
+    else
+    {
+      printf("Hi, the temperature is too high\n");
+    }
+}
+void sendToEmail(BreachType breachType)
+{
+  if(NORMAL != breachType)
+  {
+      printBreachType(breachType);
+  }
+}
