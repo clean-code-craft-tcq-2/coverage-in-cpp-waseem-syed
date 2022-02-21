@@ -33,3 +33,22 @@ TEST_CASE("verify limits based on given cooling type")
 	REQUIRE(coolingTypeAndTemperatureLimitsResults.m_lowerLimit == coolingTypeMedActiveAndTemperatureLimits.m_lowerLimit);
 	REQUIRE(coolingTypeAndTemperatureLimitsResults.m_upperLimit == coolingTypeMedActiveAndTemperatureLimits.m_upperLimit);
 }
+
+TEST_CASE("test temperature breach type based on cooling type")
+{ 
+  REQUIRE(classifyTemperatureBreach(PASSIVE_COOLING,36) == TOO_HIGH);
+  REQUIRE(classifyTemperatureBreach(PASSIVE_COOLING,35) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(PASSIVE_COOLING,0) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(PASSIVE_COOLING,-1) == TOO_LOW);
+  
+  REQUIRE(classifyTemperatureBreach(HI_ACTIVE_COOLING,66) == TOO_HIGH);
+  REQUIRE(classifyTemperatureBreach(HI_ACTIVE_COOLING,45) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(HI_ACTIVE_COOLING,0) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(HI_ACTIVE_COOLING,-1) == TOO_LOW);
+  
+  REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING,66) == TOO_HIGH);
+  REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING,40) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING,0) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING,-1) == TOO_LOW);
+
+}
