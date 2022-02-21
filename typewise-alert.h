@@ -44,3 +44,4 @@ void checkAndAlert(
 void sendToController(BreachType breachType);
 void sendToEmail(BreachType breachType);
 CoolingTypeAndTemperatureLimits getTemperatureLimitsForCoolingType(CoolingType coolingType);
+void printBreachType(BreachType breachType);
