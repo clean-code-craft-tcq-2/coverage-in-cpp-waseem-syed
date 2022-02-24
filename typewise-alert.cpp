@@ -48,8 +48,7 @@ void checkAndAlert(AlertData alertData, AlertResponse& alertResponse)
       alertResponse.m_isAlertSent = true;
       break;
     case TO_EMAIL:
-      sendToEmail(alertResponse.m_breachType);
-      alertResponse.m_isAlertSent = true;
+      sendToEmail(alertResponse);
       break;
   }
 }
@@ -77,5 +76,13 @@ void sendToEmail(BreachType breachType)
   if(NORMAL != breachType)
   {
       printBreachType(breachType);
+  }
+}
+void sendToEmail(AlertResponse& alertResponse)
+{
+  if(NORMAL != breachType)
+  {
+      printBreachType(alertResponse.m_breachType);
+      alertResponse.m_isAlertSent = true;
   }
 }
