@@ -63,4 +63,14 @@ TEST_CASE("check alert response")
    checkAndAlert(alertData, alertResponse);
    REQUIRE(alertResponse.m_isAlertSent == true);
    REQUIRE(alertResponse.m_breachType == TOO_HIGH);
+
+
+   AlertData alertData1;
+   alertData1.m_alertTarget = TO_EMAIL;
+   alertData1.m_batteryChar.coolingType = PASSIVE_COOLING;
+   alertData1.m_temperatureInC = 45;
+   AlertResponse alertResponse1;
+   checkAndAlert(alertData1, alertResponse1);
+   REQUIRE(alertResponse.m_isAlertSent == true);
+   REQUIRE(alertResponse.m_breachType == TOO_HIGH);
 }
