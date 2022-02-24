@@ -43,13 +43,18 @@ struct AlertData
   AlertTarget m_alertTarget;
   BatteryCharacter m_batteryChar;
   double m_temperatureInC;
-  bool m_isAlertSent;
+};
+
+struct AlertResponse
+{
+   BreachType m_breachType;
+   bool m_isAlertSent;
 };
 
 void checkAndAlert(
   AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
 
-void checkAndAlert(AlertData& alertData);
+void checkAndAlert(AlertData alertData, AlertResponse& alertResponse);
 
 void sendToController(BreachType breachType);
 void sendToEmail(BreachType breachType);
