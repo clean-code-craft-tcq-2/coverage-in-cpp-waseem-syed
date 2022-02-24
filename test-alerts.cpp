@@ -52,3 +52,14 @@ TEST_CASE("test temperature breach type based on cooling type")
   REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING,-1) == TOO_LOW);
 
 }
+
+TEST_CASE("test temperature breach type based on cooling type")
+{
+   AlertData alertData;
+   alertData.m_alertTarget = TO_CONTROLLER;
+   alertData.m_batteryChar.coolingType = PASSIVE_COOLING;
+   alertData.m_temperatureInC = 45;
+   AlertResponse alertResponse;
+   checkAndAlert(alertData, alertResponse);
+   REQUIRE(alertResponse.m_isAlertSent == true);
+}
