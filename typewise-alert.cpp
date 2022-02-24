@@ -80,7 +80,7 @@ void sendToEmail(BreachType breachType)
 }
 void sendToEmail(AlertResponse& alertResponse)
 {
-  if(NORMAL != breachType)
+  if(NORMAL != alertResponse.m_breachType)
   {
       printBreachType(alertResponse.m_breachType);
       alertResponse.m_isAlertSent = true;
