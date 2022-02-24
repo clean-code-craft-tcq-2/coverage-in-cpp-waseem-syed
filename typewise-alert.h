@@ -55,5 +55,7 @@ void checkAndAlert(AlertData alertData, AlertResponse& alertResponse);
 
 void sendToController(BreachType breachType);
 void sendToEmail(BreachType breachType);
+void sendToController(AlertResponse& alertResponse);
+void sendToEmail(AlertResponse& alertResponse);
 CoolingTypeAndTemperatureLimits getTemperatureLimitsForCoolingType(CoolingType coolingType);
 void printBreachType(BreachType breachType);
