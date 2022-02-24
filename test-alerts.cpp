@@ -132,3 +132,24 @@ TEST_CASE("test alert for email")
    sendToEmail(alertResponse2);
    REQUIRE(alertResponse2.m_isAlertSent == true);
 }
+
+TEST_CASE("test alert for Controller")
+{
+   AlertResponse alertResponse;
+   alertResponse.m_isAlertSent = false;
+   alertResponse.m_breachType = NORMAL;
+   sendToController(alertResponse);
+   REQUIRE(alertResponse.m_isAlertSent == true);
+	   
+   AlertResponse alertResponse1;
+   alertResponse1.m_breachType = TOO_HIGH;
+   alertResponse1.m_isAlertSent = false;
+   sendToController(alertResponse1);
+   REQUIRE(alertResponse1.m_isAlertSent == true);
+
+   AlertResponse alertResponse2;
+   alertResponse2.m_breachType = TOO_LOW;
+   alertResponse2.m_isAlertSent = false;
+   sendToController(alertResponse2);
+   REQUIRE(alertResponse2.m_isAlertSent == true);
+}
