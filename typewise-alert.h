@@ -51,9 +51,6 @@ struct AlertResponse
    bool m_isAlertSent;
 };
 
-void checkAndAlert(
-  AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
-
 void checkAndAlert(AlertData alertData, AlertResponse& alertResponse);
 
 void sendToController(BreachType breachType);
