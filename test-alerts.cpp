@@ -114,17 +114,20 @@ TEST_CASE("check alert response")
 TEST_CASE("test alert for email")
 {
    AlertResponse alertResponse;
+   alertResponse.m_isAlertSent = false;
    alertResponse.m_breachType = NORMAL;
    sendToEmail(alertResponse);
    REQUIRE(alertResponse.m_isAlertSent == false);
 	   
    AlertResponse alertResponse1;
    alertResponse1.m_breachType = TOO_HIGH;
+   alertResponse1.m_isAlertSent = false;
    sendToEmail(alertResponse1);
    REQUIRE(alertResponse1.m_isAlertSent == true);
 
    AlertResponse alertResponse2;
    alertResponse2.m_breachType = TOO_LOW;
+   alertResponse2.m_isAlertSent = false;
    sendToEmail(alertResponse2);
    REQUIRE(alertResponse2.m_isAlertSent == true);
 }
