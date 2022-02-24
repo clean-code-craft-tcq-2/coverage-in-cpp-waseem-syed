@@ -100,4 +100,31 @@ TEST_CASE("check alert response")
    checkAndAlert(alertData4, alertResponse4);
    REQUIRE(alertResponse4.m_isAlertSent == true);
    REQUIRE(alertResponse4.m_breachType == NORMAL);
+
+   AlertData alertData5;
+   alertData5.m_alertTarget = TO_EMAIL;
+   alertData5.m_batteryChar.coolingType = HI_ACTIVE_COOLING;
+   alertData5.m_temperatureInC = 20;
+   AlertResponse alertResponse5;
+   checkAndAlert(alertData5, alertResponse5);
+   REQUIRE(alertResponse5.m_isAlertSent == false);
+   REQUIRE(alertResponse5.m_breachType == NORMAL);
+}
+
+TEST_CASE("test alert for email")
+{
+   AlertResponse alertResponse;
+   alertResponse.m_breachType = NORMAL;
+   sendToEmail(alertResponse);
+   REQUIRE(alertResponse.m_isAlertSent = false;
+	   
+   AlertResponse alertResponse1;
+   alertResponse1.m_breachType = TOO_HIGH;
+   sendToEmail(alertResponse1);
+   REQUIRE(alertResponse1.m_isAlertSent = true;
+
+   AlertResponse alertResponse2;
+   alertResponse2.m_breachType = TOO_LOW;
+   sendToEmail(alertResponse2);
+   REQUIRE(alertResponse2.m_isAlertSent = true;
 }
