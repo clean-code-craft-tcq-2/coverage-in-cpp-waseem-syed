@@ -44,8 +44,7 @@ void checkAndAlert(AlertData alertData, AlertResponse& alertResponse)
   alertResponse.m_breachType = classifyTemperatureBreach(alertData.m_batteryChar.coolingType, alertData.m_temperatureInC);
    switch(alertData.m_alertTarget) {
     case TO_CONTROLLER:
-      sendToController(alertResponse.m_breachType);
-      alertResponse.m_isAlertSent = true;
+      sendToController(alertResponse);
       break;
     case TO_EMAIL:
       sendToEmail(alertResponse);
@@ -53,9 +52,10 @@ void checkAndAlert(AlertData alertData, AlertResponse& alertResponse)
   }
 }
 
-void sendToController(BreachType breachType) {
+void sendToController(AlertResponse& alertResponse) {
   const unsigned short header = 0xfeed;
   printf("%x : %x\n", header, breachType);
+  alertResponse.m_isAlertSent = true;
 }
 
 void printBreachType(BreachType breachType)
@@ -71,13 +71,7 @@ void printBreachType(BreachType breachType)
       printf("Hi, the temperature is too high\n");
     }
 }
-void sendToEmail(BreachType breachType)
-{
-  if(NORMAL != breachType)
-  {
-      printBreachType(breachType);
-  }
-}
+
 void sendToEmail(AlertResponse& alertResponse)
 {
   if(NORMAL != alertResponse.m_breachType)
