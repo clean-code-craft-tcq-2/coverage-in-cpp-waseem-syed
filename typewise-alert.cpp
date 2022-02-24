@@ -54,7 +54,7 @@ void checkAndAlert(AlertData alertData, AlertResponse& alertResponse)
 
 void sendToController(AlertResponse& alertResponse) {
   const unsigned short header = 0xfeed;
-  printf("%x : %x\n", header, breachType);
+  printf("%x : %x\n", header, alertResponse.m_breachType);
   alertResponse.m_isAlertSent = true;
 }
 
