@@ -53,7 +53,7 @@ TEST_CASE("test temperature breach type based on cooling type")
 
 }
 
-TEST_CASE("test temperature breach type based on cooling type")
+TEST_CASE("check alert response")
 {
    AlertData alertData;
    alertData.m_alertTarget = TO_CONTROLLER;
