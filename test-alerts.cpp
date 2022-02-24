@@ -62,4 +62,5 @@ TEST_CASE("check alert response")
    AlertResponse alertResponse;
    checkAndAlert(alertData, alertResponse);
    REQUIRE(alertResponse.m_isAlertSent == true);
+   REQUIRE(alertResponse.m_breachType == TOO_HIGH);
 }
