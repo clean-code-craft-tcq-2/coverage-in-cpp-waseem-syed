@@ -97,7 +97,7 @@ TEST_CASE("check alert response")
    alertData4.m_batteryChar.coolingType = HI_ACTIVE_COOLING;
    alertData4.m_temperatureInC = 20;
    AlertResponse alertResponse4;
-   checkAndAlert(alertData4, alertResponse3);
+   checkAndAlert(alertData4, alertResponse4);
    REQUIRE(alertResponse4.m_isAlertSent == true);
    REQUIRE(alertResponse4.m_breachType == NORMAL);
 }
